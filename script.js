@@ -1,8 +1,9 @@
-const buttons = document.querySelectorAll('button');
+const buttons = document.querySelectorAll('.play-options img');
+const gameResult = document.querySelector('.game-result > p');
+const playerPlayImg = document.querySelector('.player-play > img');
+const computerPlayImg = document.querySelector('.computer-play > img');
 const playerScoreDisplay = document.querySelector('#player-score');
 const computerScoreDisplay = document.querySelector('#computer-score');
-const currentGame = document.querySelector('#current-game--result');
-const winnerDisplay = document.querySelector('.display-winner');
 let playerScore = 0;
 let computerScore = 0;
 
@@ -10,12 +11,14 @@ buttons.forEach(btn => {
     btn.addEventListener('click', function (e) {
         const playerChoice = e.target.getAttribute('id');
         const computerChoice = getComputerChoice();
-        const gameResult = playGameRound(playerChoice, computerChoice);
-        currentGame.textContent = gameResult;
+        const gameMessage = playGameRound(playerChoice, computerChoice);
+        playerPlayImg.setAttribute('src', `./img/${playerChoice}.png`);
+        computerPlayImg.setAttribute('src', `./img/${computerChoice}.png`);
+        gameResult.textContent = gameMessage;
 
-        const userResult = checkIfUserWon(gameResult);
+        const userResult = checkIfUserWon(gameMessage);
 
-        if (gameResult.startsWith("It's a Draw!")) {
+        if (gameMessage.startsWith("It's a Draw!")) {
             return;
         } else {
             if (userResult) {
@@ -28,10 +31,10 @@ buttons.forEach(btn => {
         }
 
         if (playerScore === 5) {
-            winnerDisplay.textContent = 'You reached 5 wins. Congratulations! You are the winner!';
+            gameResult.textContent = 'You reached 5 wins. Congratulations! You are the winner!';
             setTimeout(() => resetGame(), 2000);
         } else if (computerScore === 5) {
-            winnerDisplay.textContent = 'Computer reached 5 wins. You lost the game :(';
+            gameResult.textContent = 'Computer reached 5 wins. You lost the game :(';
             setTimeout(() => resetGame(), 2000);
         }
     });
@@ -40,7 +43,7 @@ buttons.forEach(btn => {
 function resetGame() {
     playerScore = 0;
     computerScore = 0;
-    currentGame.textContent = '';
+    gameResult.textContent = '';
     playerScoreDisplay.textContent = '0';
     computerScoreDisplay.textContent = '0';
 }

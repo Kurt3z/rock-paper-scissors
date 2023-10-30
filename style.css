@@ -43,10 +43,6 @@ main {
 }
 
 .game-result p:first-child {
-    font-size: 40px;
-}
-
-.game-result p:last-child {
     font-size: 20px;
 }
 
@@ -57,7 +53,7 @@ main {
 }
 
 .play {
-    font-size: 19px;
+    font-size: 18px;
     display: flex;
     flex-direction: column;
     justify-content: center;
