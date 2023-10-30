@@ -94,7 +94,6 @@ main {
     border: 5px solid var(--headings-color);
     padding: 15px;
     border-radius: 20px;
-    transition: 0.3s;
 }
 
 .option-container:hover {
