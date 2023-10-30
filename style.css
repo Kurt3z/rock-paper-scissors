@@ -115,17 +115,17 @@ footer {
 
 @media (min-width: 40rem) {
     h1 {
-        font-size: 56px;
+        font-size: 36px;
         margin-bottom: 15px;
     }
 
     header > p {
-        font-size: 35px;
+        font-size: 25px;
     }
 
     main {
         width: 100%;
-        max-width: 800px;
+        max-width: 700px;
         max-height: 600px;
         align-self: center;
         border-radius: 20px;
@@ -137,11 +137,11 @@ footer {
     }
 
     .game-result h2 {
-        font-size: 44px;
+        font-size: 40px;
     }
 
     .play > img {
-        height: 150px;
+        height: 120px;
     }
 
     .play-options {
@@ -149,10 +149,10 @@ footer {
     }
 
     .play-options img {
-        height: 70px;
+        height: 50px;
     }
 
     footer {
-        font-size: 20px;
+        font-size: 18px;
     }
 }
