@@ -1,6 +1,48 @@
-function getPlayerChoice() {
-    const choice = prompt('Choose Rock/Paper/Scissors: ').toLowerCase();
-    return choice;
+const buttons = document.querySelectorAll('button');
+const playerScoreDisplay = document.querySelector('#player-score');
+const computerScoreDisplay = document.querySelector('#computer-score');
+const currentGame = document.querySelector('#current-game--result');
+const winnerDisplay = document.querySelector('.display-winner');
+let playerScore = 0;
+let computerScore = 0;
+
+buttons.forEach(btn => {
+    btn.addEventListener('click', function (e) {
+        const playerChoice = e.target.getAttribute('id');
+        const computerChoice = getComputerChoice();
+        const gameResult = playGameRound(playerChoice, computerChoice);
+        currentGame.textContent = gameResult;
+
+        const userResult = checkIfUserWon(gameResult);
+
+        if (gameResult.startsWith("It's a Draw!")) {
+            return;
+        } else {
+            if (userResult) {
+                playerScore += 1;
+                playerScoreDisplay.textContent = playerScore;
+            } else {
+                computerScore += 1;
+                computerScoreDisplay.textContent = computerScore;
+            }
+        }
+
+        if (playerScore === 5) {
+            winnerDisplay.textContent = 'You reached 5 wins. Congratulations! You are the winner!';
+            setTimeout(() => resetGame(), 2000);
+        } else if (computerScore === 5) {
+            winnerDisplay.textContent = 'Computer reached 5 wins. You lost the game :(';
+            setTimeout(() => resetGame(), 2000);
+        }
+    });
+});
+
+function resetGame() {
+    playerScore = 0;
+    computerScore = 0;
+    currentGame.textContent = '';
+    playerScoreDisplay.textContent = '0';
+    computerScoreDisplay.textContent = '0';
 }
 
 function getComputerChoice() {
@@ -47,22 +89,10 @@ function capitalizeFirstLetter(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-function game() {
-    for (let i = 1; i <= 5; i++) {
-        const playerChoice = getPlayerChoice();
-        if (validateUserInput(playerChoice)) {
-            const computerChoice = getComputerChoice();
-            console.log(
-                `Player Choose: ${capitalizeFirstLetter(playerChoice)} | Computer Choose: ${capitalizeFirstLetter(
-                    computerChoice
-                )}`
-            );
-            console.log(playGameRound(playerChoice, computerChoice));
-        } else {
-            console.log("I'm sorry! You didn't choose a valid option... Game can't continue. Bye!");
-            return;
-        }
+function checkIfUserWon(gameResultStr) {
+    if (gameResultStr.startsWith('You Win!')) {
+        return true;
+    } else {
+        return false;
     }
 }
-
-game();
