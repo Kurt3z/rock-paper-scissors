@@ -3,15 +3,56 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="style.css" />
         <title>Rock Paper Scissors</title>
     </head>
     <body>
-        <p>Scoreboard: Player <span id="player-score">0</span> : <span id="computer-score">0</span> Computer</p>
+        <header>
+            <h1>Rock Paper Scissors</h1>
+            <p>Win 5 times to be the ultimate Winner!</p>
+        </header>
+
+        <main>
+            <div class="game-result">
+                <p>You Won!</p>
+                <p>Paper Beats Rock!</p>
+            </div>
+
+            <div class="current-game">
+                <div class="play player-play">
+                    <img src="./img/rock.png" alt="" />
+                    <p>Player: <span id="player-score">0</span></p>
+                </div>
+                <div class="play computer-play">
+                    <img src="./img/rock.png" alt="" />
+                    <p>Computer: <span id="computer-score">0</span></p>
+                </div>
+            </div>
+
+            <div class="play-options">
+                <div class="option-container">
+                    <img src="./img/rock.png" alt="" />
+                </div>
+                <div class="option-container">
+                    <img src="./img/paper.png" alt="" />
+                </div>
+                <div class="option-container">
+                    <img src="./img/scissors.png" alt="" />
+                </div>
+            </div>
+        </main>
+        <footer>
+            <p>Copyright &copy; 2023 Tiago Pinto</p>
+        </footer>
+    </body>
+</html>
+
+<!-- <p>Scoreboard: Player <span id="player-score">0</span> : <span id="computer-score">0</span> Computer</p>
         <button type="button" id="rock">Rock</button>
         <button type="button" id="paper">Paper</button>
         <button type="button" id="scissors">Scissors</button>
         <div>Current Game: <span id="current-game--result"></span></div>
-        <div class="display-winner"></div>
-        <script src="./script.js"></script>
-    </body>
-</html>
+        <div class="display-winner"></div> -->
