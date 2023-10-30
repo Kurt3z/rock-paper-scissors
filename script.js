@@ -1,5 +1,5 @@
 const buttons = document.querySelectorAll('.play-options img');
-const gameResult = document.querySelector('.game-result > p');
+const gameResult = document.querySelector('.game-result > h2');
 const playerPlayImg = document.querySelector('.player-play > img');
 const computerPlayImg = document.querySelector('.computer-play > img');
 const playerScoreDisplay = document.querySelector('#player-score');
@@ -32,10 +32,10 @@ buttons.forEach(btn => {
 
         if (playerScore === 5) {
             gameResult.textContent = 'You reached 5 wins. Congratulations! You are the winner!';
-            setTimeout(() => resetGame(), 2000);
+            setTimeout(() => resetGame(), 3000);
         } else if (computerScore === 5) {
             gameResult.textContent = 'Computer reached 5 wins. You lost the game :(';
-            setTimeout(() => resetGame(), 2000);
+            setTimeout(() => resetGame(), 3000);
         }
     });
 });
@@ -43,7 +43,7 @@ buttons.forEach(btn => {
 function resetGame() {
     playerScore = 0;
     computerScore = 0;
-    gameResult.textContent = '';
+    gameResult.textContent = 'PLAY';
     playerScoreDisplay.textContent = '0';
     computerScoreDisplay.textContent = '0';
 }
